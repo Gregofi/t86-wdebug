@@ -1111,7 +1111,9 @@ class INS_NAME : public ConditionalJumpInstruction {          \
 
     class GETCHAR : public Instruction {
     public:
-        GETCHAR(Register reg, std::istream& is = std::cin) : reg_(reg), is_(is) {}
+        GETCHAR(Register reg, std::istream& is = std::cin) : reg_(reg), is_(is) {
+            is_ >> std::noskipws;
+        }
 
         Type type() const override { return Type::GETCHAR; }
 
